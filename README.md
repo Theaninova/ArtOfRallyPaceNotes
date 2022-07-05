@@ -111,7 +111,7 @@ who doesn't really know shit about this.***
 Follow the [installation guide](https://www.nexusmods.com/site/mods/21/) of
 the Unity Mod Manager.
 
-Then simply download the [latest release](https://github.com/Theaninova/Art-Of-Rally-Reset-Pacenotes/releases/latest)
+Then simply download the [latest release](https://github.com/Theaninova/ArtOfRallyPacenotes/releases/latest)
 and drop it into the mod manager's mods page.
 
 ## Showcase
