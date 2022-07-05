@@ -19,6 +19,8 @@ A mod for Art Of Rally that adds automatic & configurable pace notes.
 ![](https://img.shields.io/badge/XBox-Not%20Supprted-red)
 ![](https://img.shields.io/badge/Switch-Not%20Supprted-red)
 
+***If you created an asset set or pacenotes and want to share it,
+please either message me or submit a merge request to the `presets/` folder.***
 
 ## Usage
 
@@ -27,7 +29,9 @@ and enable or disable the desired features.
 
 ### Features
 
-TODO
+* Pace notes!
+* Custom asset sets
+* Custom pace note configuration
 
 ### Folder Structure
 
@@ -54,6 +58,8 @@ mod root/
 
 ### Writing Pace Notes
 
+First, enable the "Show Current Waypoint" setting in the options.
+
 In principle, you could use any names for your pace notes, but
 for the sake of consistency, we are going to use the Patterson "Numbers" system
 for naming.
@@ -72,7 +78,33 @@ with the following columns:
 | 20             | 30           | AcR       |
 | ...            | ...          | ...       |
 
+Which would be the equivalent of
+
+`area_stage.csv`
+```csv
+0,10,1R
+20,30,AcR
+...,...,...
+```
+
 This means from waypoint 0..10, you will see the pace note for 1R.
+
+Please also refer to the included files for more info on how to create them.
+
+### Adding assets
+
+Honestly, not sure which image formats are supported beside PNG, just try.
+
+For adding them simply paste the files into the `PaceNoteAssets/yourCustomAssets`
+folder, set the "Asset Set" option to "yourCustomAssets", and click "Save".
+
+Your files should be named according to the Patterson "Numbers" system, but
+if you want feel free to use any name you want. Just be aware that the names
+have to correspond to the ones in the CSV file. There are no further
+restrictions imposed.
+
+***Naming is purely a recommendation from someone
+who doesn't really know shit about this.***
 
 ## Installation
 
@@ -84,4 +116,6 @@ and drop it into the mod manager's mods page.
 
 ## Showcase
 
-[**Demo Video:**](TODO)
+[**Demo Video:**](https://www.youtube.com/watch?v=2-Leem4fPRk)
+
+[![](thumbnail.png)](https://www.youtube.com/watch?v=2-Leem4fPRk)
