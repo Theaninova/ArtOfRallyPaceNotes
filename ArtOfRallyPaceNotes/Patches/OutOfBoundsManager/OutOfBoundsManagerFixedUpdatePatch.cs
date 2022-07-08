@@ -12,13 +12,9 @@ namespace ArtOfRallyPaceNotes.Patches.OutOfBoundsManager
     public class OutOfBoundsManagerFixedUpdatePatch
     {
         // ReSharper disable twice InconsistentNaming
-        public static void Postfix(
-            global::OutOfBoundsManager __instance,
-            int ___CurrentWaypointIndex,
-            Vector3[] ____cachedWaypoints)
+        public static void Postfix(int ___CurrentWaypointIndex)
         {
-            PaceNoteManager.Waypoints = ____cachedWaypoints;
-            PaceNoteManager.CurrentWaypoint = ___CurrentWaypointIndex;
+            PaceNoteManager.CurrentWaypointIndex = ___CurrentWaypointIndex;
         }
     }
 
@@ -29,8 +25,24 @@ namespace ArtOfRallyPaceNotes.Patches.OutOfBoundsManager
         {
             var stage = GameModeManager.RallyManager.RallyData.GetCurrentStage();
             var stageKey = $"{AreaManager.GetAreaStringNotLocalized(stage.Area)}_{stage.Name}";
-            
+
             Main.Logger.Log($"Stage key: {stageKey}, WaypointCount: {____cachedWaypoints.Length}");
+
+            PaceNoteManager.Waypoints = ____cachedWaypoints;
+            PaceNoteManager.Distances = PaceNoteGenerator.GetDistances(____cachedWaypoints);
+            PaceNoteManager.Angles = PaceNoteGenerator.GetAngles(____cachedWaypoints);
+            PaceNoteManager.MeanAngles = PaceNoteGenerator.GetMeanValues(
+                PaceNoteManager.Angles,
+                PaceNoteManager.Distances,
+                Main.Settings.DistanceTolerance
+            );
+            PaceNoteManager.Elevations = PaceNoteGenerator.GetElevations(____cachedWaypoints);
+            PaceNoteManager.MeanElevations = PaceNoteGenerator.GetMeanValues(
+                PaceNoteManager.Elevations,
+                PaceNoteManager.Distances,
+                Main.Settings.DistanceTolerance
+            );
+            Main.Logger.Log($"Angles: {PaceNoteManager.Angles.Length}");
 
             PaceNote.PaceNoteConfig =
                 PaceNoteConfigLoader.LoadPaceNoteConfig(stageKey, ____cachedWaypoints.Length);

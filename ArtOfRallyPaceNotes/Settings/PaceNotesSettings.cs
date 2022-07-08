@@ -24,14 +24,21 @@ namespace ArtOfRallyPaceNotes.Settings
         [Draw(DrawType.Toggle)] public bool ShowCurrentWaypoint = false;
 
         [Draw(DrawType.Field)] public string AssetSet = "default";
-        
+
         [Draw(DrawType.Field)] public string ConfigSet = "default";
 
         [Header("Positioning")] [Draw(DrawType.Slider, Min = 1, Max = 1000)]
         public int PaceNoteSize = 200;
 
-        [Draw(DrawType.Slider, Min = 0.0f, Max = 1.0f)] public float PositionY = 0.25f;
-        [Draw(DrawType.Slider, Min = 0.0f, Max = 1.0f)] public float PositionX = 0.5f;
+        [Draw(DrawType.Slider, Min = 0.0f, Max = 1.0f)]
+        public float PositionY = 0.25f;
+
+        [Draw(DrawType.Slider, Min = 0.0f, Max = 1.0f)]
+        public float PositionX = 0.5f;
+
+        [Header("Auto Generation")] [Draw(DrawType.Field)]
+        public float DistanceTolerance = 10;
+
 
         public void OnChange()
         {

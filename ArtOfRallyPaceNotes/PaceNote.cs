@@ -16,13 +16,21 @@ namespace ArtOfRallyPaceNotes
 
         public static void Draw(UnityModManager.ModEntry modEntry)
         {
-            var paceNote = PaceNoteConfig?[PaceNoteManager.CurrentWaypoint];
+            var paceNote = PaceNoteConfig?[PaceNoteManager.CurrentWaypointIndex];
 
             if (Main.Settings.ShowCurrentWaypoint)
             {
                 GUI.Label(
                     new Rect(0, 0, 200, 200),
-                    $"Waypoint {PaceNoteManager.CurrentWaypoint}\nPace Note: {paceNote}"
+                    $"Waypoint {PaceNoteManager.CurrentWaypointIndex}\n"
+                    + $"∠{PaceNoteManager.Angles?[PaceNoteManager.CurrentWaypointIndex]:F}° "
+                    + $"∑{PaceNoteManager.MeanAngles?[PaceNoteManager.CurrentWaypointIndex]:F}° "
+                    + $"@ {Main.Settings.DistanceTolerance:F}m\n"
+                    + $"↕{PaceNoteManager.Elevations?[PaceNoteManager.CurrentWaypointIndex]:F}m "
+                    + $"∑{PaceNoteManager.MeanElevations?[PaceNoteManager.CurrentWaypointIndex]:F}m "
+                    + $"@ {Main.Settings.DistanceTolerance:F}m\n"
+                    + $"↔{PaceNoteManager.Distances?[PaceNoteManager.CurrentWaypointIndex]:F}m\n"
+                    + $"Pace Note: {paceNote}"
                 );
             }
 
