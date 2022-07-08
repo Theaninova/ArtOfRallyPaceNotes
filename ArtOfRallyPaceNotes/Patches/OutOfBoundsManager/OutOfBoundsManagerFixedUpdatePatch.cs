@@ -1,4 +1,5 @@
-﻿using ArtOfRallyPaceNotes.Loader;
+﻿using ArtOfRallyPaceNotes.Config;
+using ArtOfRallyPaceNotes.Loader;
 using HarmonyLib;
 using UnityEngine;
 
@@ -46,6 +47,18 @@ namespace ArtOfRallyPaceNotes.Patches.OutOfBoundsManager
 
             PaceNote.PaceNoteConfig =
                 PaceNoteConfigLoader.LoadPaceNoteConfig(stageKey, ____cachedWaypoints.Length);
+            if (PaceNote.PaceNoteConfig == null)
+            {
+                PaceNote.PaceNoteConfig = PaceNoteGenerator.GeneratePaceNotes(
+                    PaceNoteManager.Waypoints,
+                    PaceNoteManager.Distances,
+                    PaceNoteManager.Angles,
+                    PaceNoteManager.Elevations,
+                    DefaultConfig.PaceNoteGeneratorConfig
+                )[0];
+                Main.Logger.Log("Auto-generated PaceNotes");
+                Main.Logger.Log($"[{string.Join(", ", PaceNote.PaceNoteConfig)}]");
+            }
         }
     }
 }

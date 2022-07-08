@@ -47,14 +47,14 @@ namespace ArtOfRallyPaceNotes
                 {
                     var angle = summedList[j];
 
-                    if (angle >= setting.MinimumValue && angle < setting.MaximumValue)
+                    if (angle >= setting.MaximumValue || angle < setting.MinimumValue) continue;
+
+                    var index = j;
+                    /*for (var distance = 0f; index >= 0 && distance <= setting.WarningDistance; index--)
                     {
-                        paceNotes[j] = setting.Name;
-                    }
-                    else
-                    {
-                        paceNotes[j] = null;
-                    }
+                        distance += distances[index];
+                    }*/
+                    paceNotes[index] = setting.Name;
                 }
 
                 result[i] = paceNotes;

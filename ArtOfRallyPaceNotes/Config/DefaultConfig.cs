@@ -8,19 +8,19 @@
             {
                 Name = "SqR",
                 Mode = PaceNoteMode.ANGLE,
-                DistanceSumTolerance = 10,
-                MinimumValue = 85,
+                DistanceSumTolerance = 60,
+                MinimumValue = 65,
                 MaximumValue = 95,
-                WarningDistance = 50,
+                WarningDistance = 0,
             },
             new PaceNoteGeneratorConfig
             {
                 Name = "3R",
                 Mode = PaceNoteMode.ANGLE,
-                DistanceSumTolerance = 10,
+                DistanceSumTolerance = 25,
                 MinimumValue = 35,
                 MaximumValue = 45,
-                WarningDistance = 50,
+                WarningDistance = 0,
             }
         };
     }

@@ -16,6 +16,7 @@ namespace ArtOfRallyPaceNotes.Loader
             if (!File.Exists(path))
             {
                 Main.Logger.Warning($"No config file found for stage {stage} (tried set {Main.Settings.ConfigSet})");
+                return null;
             }
 
             var outList = new string[count];
